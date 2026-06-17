@@ -1,6 +1,6 @@
 # tongflow-modal-crawl4ai
 
-Official TongFlow plugin. URL/link-to-text extraction with **Crawl4AI**, running on [Modal](https://modal.com). Fetches a page and turns its content into clean text.
+Official [TongFlow](https://github.com/tong-io/tongflow) plugin. URL/link-to-text extraction with **Crawl4AI**, running on [Modal](https://modal.com). Fetches a page and turns its content into clean text.
 
 ## Capabilities
 
