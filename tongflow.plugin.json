@@ -1,4 +1,9 @@
 {
+    "plugin": {
+        "name": "Crawl4AI",
+        "description": "URL-to-text extraction with Crawl4AI — fetch a page and turn its content into clean text.",
+        "icon": "/plugins/tongflow-modal-crawl4ai.svg"
+    },
     "env": [
         {
             "key": "MODAL_TOKEN_ID",
