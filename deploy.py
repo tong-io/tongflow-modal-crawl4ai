@@ -30,7 +30,7 @@ logger = logging.getLogger(__name__)
 image = (
     modal.Image.from_registry("unclecode/crawl4ai:0.7.7")
     .pip_install(
-        "tongflow==0.1.0",
+        "tongflow==0.2.13", "fastapi[standard]",
     )
 )
 
@@ -134,3 +134,18 @@ class Inference:
             success=True,
             mainText=str(result.get("markdown") or ""),
         )
+
+    @modal.fastapi_endpoint(method="GET", label=f"{Path(__file__).resolve().parent.name}-serve")
+    def serve(self, taskId: str = "", token: str = "", origin: str = ""):
+        from fastapi.responses import StreamingResponse
+        from tongflow import serve_stream_from_spec
+
+        return StreamingResponse(
+            serve_stream_from_spec(
+                origin, taskId, token, __file__,
+                invoke=lambda m, inp: getattr(self, m).local(inp),
+            ),
+            media_type="text/event-stream",
+            headers={"Cache-Control": "no-cache", "Access-Control-Allow-Origin": "*"},
+        )
+
