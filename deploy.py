@@ -18,6 +18,11 @@ from tongflow.node_slots import NodeSlots
 from tongflow.slots import node_slot
 
 
+# Slots this plugin is the default implementation of: the node picker lists
+# it first and a newly added node preselects it. Read statically by the
+# scanner (never executed), so any SDK version imports this file fine.
+TONGFLOW_DEFAULT_SLOTS = ["link"]
+
 _cfg: dict[str, Any] = {}
 _ = _cfg
 
