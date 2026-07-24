@@ -35,7 +35,7 @@ logger = logging.getLogger(__name__)
 image = (
     modal.Image.from_registry("unclecode/crawl4ai:0.7.7")
     .pip_install(
-        "tongflow==0.2.13", "fastapi[standard]",
+        "tongflow==0.2.16", "fastapi[standard]",
     )
 )
 
