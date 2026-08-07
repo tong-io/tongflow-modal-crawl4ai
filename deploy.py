@@ -114,13 +114,13 @@ def _crawl_task_core(task: Dict[str, Any]) -> Dict[str, Any]:
         return {"success": False, "status": "error", "error": str(e)}
 
 
-@app.function(cpu=2.0, memory=4096, timeout=600, secrets=[secrets], scaledown_window=5)
+@app.function(cpu=2.0, memory=4096, timeout=600, secrets=[secrets], scaledown_window=2)
 def crawl(task: Dict[str, Any]) -> Dict[str, Any]:
     return _crawl_task_core(task)
 
 
 @deploy
-@app.cls(cpu=2.0, memory=4096, timeout=600, secrets=[secrets], scaledown_window=5)
+@app.cls(cpu=2.0, memory=4096, timeout=600, secrets=[secrets], scaledown_window=2)
 class Inference:
     @modal.method()
     @node_slot(NodeSlots.LINK)
